@@ -1,0 +1,2 @@
+import { publicPhotos, siteSettings } from '$lib/server/repositories/public';
+export async function load({url}){const order=url.searchParams.get('sort')==='oldest'?'ASC':'DESC';const requested=url.searchParams.get('view');const view: 'all'|'albums'|'places'=requested==='albums'||requested==='places'?requested:'all';return {photos:await publicPhotos(undefined,order),settings:await siteSettings(),order,view};}

@@ -1,0 +1,3 @@
+<script lang="ts">import '../styles.css'; import Header from '$lib/components/Header.svelte'; import Footer from '$lib/components/Footer.svelte'; let {data,children}=$props();</script>
+<svelte:head><title>Westin Perry — Personal archive</title><meta name="description" content="Westin Perry's personal archive of projects, photographs, and life updates." /></svelte:head>
+<a class="skip" href="#content">Skip to content</a><div class="shell"><Header/>{#if data.databaseError}<div class="notice" role="status">The archive is temporarily unavailable. Please try again shortly.</div>{/if}<main id="content">{@render children()}</main><Footer text={data.settings.footer_text} contact={data.settings.footer_contact} links={data.links}/></div>

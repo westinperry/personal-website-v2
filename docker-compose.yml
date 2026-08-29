@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: westin_site
+      MYSQL_USER: westin_dev
+      MYSQL_PASSWORD: change-me-dev-only
+      MYSQL_ROOT_PASSWORD: local-root-only
+    ports:
+      - "3306:3306"
+    volumes:
+      - westin_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-plocal-root-only"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  westin_mysql_data:

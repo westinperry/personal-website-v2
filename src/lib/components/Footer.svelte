@@ -1,0 +1,2 @@
+<script lang="ts">let { text='Thanks for stopping by.', contact=null, links=[] } = $props<{text?:string;contact?:string|null;links?:{id:number;label:string;url:string}[]}>();</script>
+<footer><div><p>{text}</p>{#if contact}<a href={contact.includes('@')?`mailto:${contact}`:contact}>{contact}</a>{/if}</div>{#if links.length}<nav class="social-links" aria-label="Social links">{#each links as link}<a href={link.url} rel="me noreferrer" target="_blank">{link.label}</a>{/each}</nav>{/if}<small>© {new Date().getFullYear()} Westin Perry</small></footer>

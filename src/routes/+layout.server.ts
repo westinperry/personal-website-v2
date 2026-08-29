@@ -1,0 +1,2 @@
+import { siteSettings, socialLinks } from '$lib/server/repositories/public';
+export async function load() { try { const [settings,links]=await Promise.all([siteSettings(),socialLinks()]);return { settings,links,databaseError:false }; } catch (error) { console.error('Database unavailable',error); return { settings:{footer_text:'Thanks for stopping by.',footer_contact:null},links:[],databaseError:true }; } }
